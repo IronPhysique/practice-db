@@ -5,7 +5,7 @@ app = Flask(__name__)
 # Simple route
 @app.route('/')
 def home():
-    return jsonify(message="Welcome to the Starter/Leaver Web App")
+    return jsonify(message="Welcome to the testing environment for the Starter/Leaver Web App")
 
 # Example API route for starters
 @app.route('/api/starter', methods=['POST'])
