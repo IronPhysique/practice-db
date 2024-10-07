@@ -1,20 +1,16 @@
-# Use an official Python runtime as a parent image
+# Base image
 FROM python:3.9-slim
 
-# Set the working directory
+# Set working directory
 WORKDIR /app
 
-# Copy the current directory contents into the container at /app
-COPY . /app
-
-# Install the dependencies
+# Copy requirements and install dependencies
+COPY requirements.txt .
 RUN pip install -r requirements.txt
 
-# Make port 5000 available to the world outside this container
+# Copy the rest of the application
+COPY . /app
+
+# Expose port and start the Flask application
 EXPOSE 5000
-
-# Define environment variable
-ENV FLASK_ENV=development
-
-# Run the application
-CMD ["gunicorn", "-b", "0.0.0.0:5000", "app:app"]
+CMD ["python", "run.py"]
