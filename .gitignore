@@ -1,0 +1,68 @@
+# Node.js specific
+node_modules/
+npm-debug.log
+yarn-error.log
+
+# Logs
+logs/
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Dependency directories
+node_modules/
+
+# Optional npm cache directory
+.npm
+
+# TypeScript cache
+*.tsbuildinfo
+
+# Python specific
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+.Python
+env/
+venv/
+env.bak/
+venv.bak/
+
+# If using Flask/Django for backend
+instance/
+.webassets-cache
+
+# SQLite database files
+*.sqlite3
+
+# Pytest cache
+.cache/
+
+# Docker specific
+docker-compose.override.yml
+.dockerignore
+
+# Ignore Docker build files and containers
+*.db
+*.container
+
+# VSCode
+.vscode/
+
+# JetBrains (IntelliJ, PyCharm)
+.idea/
+.idea/*
+
+# macOS specific
+.DS_Store
+.AppleDouble
+.LSOverride
+
+# OS generated files
+Thumbs.db
+Desktop.ini
+
+# Environments
+.env
