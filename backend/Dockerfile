@@ -1,18 +1,16 @@
-# Use official Python image from the Docker Hub
+# Assuming the requirements.txt is in the root of your backend folder
+
+# Use an official Python runtime as a parent image
 FROM python:3.9-slim
 
 # Set the working directory
 WORKDIR /app
 
-# Copy requirements.txt and install dependencies
-COPY requirements.txt .
+# Copy the current directory contents into the container
+COPY . /app
+
+# Install the dependencies from requirements.txt
 RUN pip install --no-cache-dir -r requirements.txt
 
-# Copy the app files
-COPY . .
-
-# Expose the Flask app port
-EXPOSE 5000
-
-# Start the app
-CMD ["python", "run.py"]
+# Run the application or entrypoint (if required)
+CMD ["python", "app.py"]  # Adjust as necessary for your app
