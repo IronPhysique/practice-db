@@ -4,6 +4,9 @@ import Login from './components/Login';
 import Dashboard from './components/Dashboard';
 import PrivateRoute from './components/PrivateRoute';
 
+
+<Route path="/" element={<Login />} />
+
 const App = () => {
   return (
     <Router>
