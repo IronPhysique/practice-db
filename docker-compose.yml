@@ -2,17 +2,16 @@ version: '3.8'
 
 services:
   backend:
-    build: ./backend
+    build:
+      context: ./backend
     ports:
-      - "5000:5000"
+      - "5000:5000"  # Ensure this is set
     environment:
-      - JWT_SECRET_KEY=${JWT_SECRET_KEY}   # Load the secret key from the environment
-    env_file:
-      - ./backend/.env                     # Load environment variables for development
+      - JWT_SECRET_KEY=${JWT_SECRET_KEY}
+    command: ["python", "app.py"]  # Ensure you are specifying the command if needed
 
   frontend:
-    build: ./frontend
+    build:
+      context: ./frontend
     ports:
       - "3000:3000"
-    depends_on:
-      - backend
