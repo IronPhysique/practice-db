@@ -4,16 +4,23 @@ import Login from './components/Login';
 import Dashboard from './components/Dashboard';
 import PrivateRoute from './components/PrivateRoute';
 
-function App() {
+const App = () => {
   return (
     <Router>
       <Routes>
         <Route path="/login" element={<Login />} />
         {/* Protect the Dashboard route */}
-        <Route path="/dashboard" element={<PrivateRoute><Dashboard /></PrivateRoute>} />
+        <Route
+          path="/dashboard"
+          element={
+            <PrivateRoute>
+              <Dashboard />
+            </PrivateRoute>
+          }
+        />
       </Routes>
     </Router>
   );
-}
+};
 
 export default App;
