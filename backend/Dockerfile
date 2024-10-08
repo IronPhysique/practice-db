@@ -14,4 +14,4 @@ ENV PYTHONPATH="/app"
 RUN pip install --no-cache-dir -r requirements.txt
 
 EXPOSE 5000
-CMD ["python", "run.py"]  # Or the appropriate entry point for your app
+CMD ["python3", "run.py"]  # Or the appropriate entry point for your app
