@@ -1,7 +1,6 @@
 from flask import Blueprint, request, jsonify
 from flask_jwt_extended import jwt_required, get_jwt_identity
-from app.models import Starter, Leaver
-from app import db
+from app.models import db, Starter, Leaver  # Import models and db
 
 routes = Blueprint('routes', __name__)
 
@@ -18,7 +17,7 @@ def submit_data():
         starter = Starter(
             name=data.get('name'),
             position=data.get('position'),
-            start_date=data.get('start_date')  # Ensure this is a valid date format
+            start_date=data.get('start_date')
         )
         db.session.add(starter)
         db.session.commit()
@@ -28,11 +27,10 @@ def submit_data():
         leaver = Leaver(
             name=data.get('name'),
             position=data.get('position'),
-            leave_date=data.get('leave_date')  # Ensure this is a valid date format
+            leave_date=data.get('leave_date')
         )
         db.session.add(leaver)
         db.session.commit()
         return jsonify({"message": "Leaver added successfully!"}), 200
 
-    else:
-        return jsonify({"error": "Invalid type. Must be 'starter' or 'leaver'."}), 400
+    return jsonify({"error": "Invalid type. Must be 'starter' or 'leaver'."}), 400
