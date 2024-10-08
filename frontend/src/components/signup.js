@@ -15,10 +15,10 @@ function Signup() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await axios.post('/signup', userData);  // Backend route to handle signup
+      const response = await axios.post('/signup', userData);
       setMessage('Verification email sent! Check your inbox.');
       setTimeout(() => {
-        navigate('/login');  // Redirect to login after signup
+        navigate('/login');
       }, 3000);
     } catch (err) {
       setError('Signup failed, please try again.');
@@ -26,16 +26,22 @@ function Signup() {
   };
 
   return (
-    <div>
+    <div className="container mt-5">
       <h2>Sign Up</h2>
       <form onSubmit={handleSubmit}>
-        <input name="email" value={userData.email} onChange={handleChange} placeholder="Email" type="email" />
-        <input name="username" value={userData.username} onChange={handleChange} placeholder="Username" />
-        <input name="password" value={userData.password} onChange={handleChange} placeholder="Password" type="password" />
-        <button type="submit">Sign Up</button>
+        <div className="mb-3">
+          <input name="email" value={userData.email} onChange={handleChange} placeholder="Email" type="email" className="form-control" required />
+        </div>
+        <div className="mb-3">
+          <input name="username" value={userData.username} onChange={handleChange} placeholder="Username" className="form-control" required />
+        </div>
+        <div className="mb-3">
+          <input name="password" value={userData.password} onChange={handleChange} placeholder="Password" type="password" className="form-control" required />
+        </div>
+        <button type="submit" className="btn btn-primary">Sign Up</button>
       </form>
-      {message && <p>{message}</p>}
-      {error && <p>{error}</p>}
+      {message && <p className="text-success">{message}</p>}
+      {error && <p className="text-danger">{error}</p>}
     </div>
   );
 }

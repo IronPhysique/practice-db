@@ -23,14 +23,18 @@ function Login() {
   };
 
   return (
-    <div>
+    <div className="container mt-5">
       <h2>Login</h2>
       <form onSubmit={handleSubmit}>
-        <input name="username" value={credentials.username} onChange={handleChange} placeholder="Username" />
-        <input name="password" value={credentials.password} onChange={handleChange} placeholder="Password" type="password" />
-        <button type="submit">Login</button>
+        <div className="mb-3">
+          <input name="username" value={credentials.username} onChange={handleChange} placeholder="Username" className="form-control" required />
+        </div>
+        <div className="mb-3">
+          <input name="password" value={credentials.password} onChange={handleChange} placeholder="Password" type="password" className="form-control" required />
+        </div>
+        <button type="submit" className="btn btn-primary">Login</button>
       </form>
-      {error && <p>{error}</p>}
+      {error && <p className="text-danger">{error}</p>}
     </div>
   );
 }

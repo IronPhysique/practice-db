@@ -2,29 +2,30 @@ import React, { useEffect, useState } from 'react';
 import axios from '../services/api';
 
 function Dashboard() {
-  const [data, setData] = useState(null);
+  const [data, setData] = useState([]);
 
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.get('/dashboard'); // Protected route
+        const response = await axios.get('/dashboard-data');  // Assuming this is a protected route
         setData(response.data);
-      } catch (err) {
-        console.error('Error fetching data', err);
+      } catch (error) {
+        console.error('Error fetching dashboard data', error);
       }
     };
-
     fetchData();
   }, []);
 
   return (
-    <div>
+    <div className="container mt-5">
       <h2>Dashboard</h2>
-      {data ? <p>Welcome to the dashboard!</p> : <p>Loading...</p>}
+      <ul className="list-group">
+        {data.map((item, index) => (
+          <li key={index} className="list-group-item">{item}</li>
+        ))}
+      </ul>
     </div>
   );
 }
 
 export default Dashboard;
-
-// commit
