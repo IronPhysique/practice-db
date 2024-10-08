@@ -1,18 +1,18 @@
-version: "3.8"
+version: '3.8'
 
 services:
+  backend:
+    build: ./backend
+    ports:
+      - "5000:5000"
+    environment:
+      - JWT_SECRET_KEY=${JWT_SECRET_KEY}   # Load the secret key from the environment
+    env_file:
+      - ./backend/.env                     # Load environment variables for development
+
   frontend:
     build: ./frontend
     ports:
       - "3000:3000"
     depends_on:
       - backend
-    environment:
-      - REACT_APP_BACKEND_URL=http://localhost:5000/api
-
-  backend:
-    build: ./backend
-    ports:
-      - "5000:5000"
-    environment:
-      - JWT_SECRET_KEY=your_jwt_secret_key
