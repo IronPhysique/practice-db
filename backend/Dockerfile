@@ -13,5 +13,7 @@ ENV PYTHONPATH="/app"
 # Install the dependencies from requirements.txt
 RUN pip install --no-cache-dir -r requirements.txt
 
+EXPOSE 5000
+
 # Run the application (adjust if necessary)
 CMD ["python", "app.py"]  # Or the appropriate entry point for your app
