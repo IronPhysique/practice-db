@@ -9,7 +9,7 @@ def client():
     # Initialize the app with testing configuration
     app = create_app()
     app.config['TESTING'] = True
-    app.config['JWT_SECRET_KEY'] = os.getenv('JWT_SECRET_KEY')
+    app.config['JWT_SECRET_KEY'] = os.getenv('JWT_SECRET_KEY', 'test_secret_key')
     app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///:memory:'  # Use in-memory database for testing
 
     client = app.test_client()
