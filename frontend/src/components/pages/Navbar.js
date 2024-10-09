@@ -5,13 +5,14 @@ function Navbar() {
   const token = localStorage.getItem('jwtToken');
 
   const handleLogout = () => {
-    localStorage.removeItem('jwtToken');  // Remove token from storage on logout
+    localStorage.removeItem('jwtToken');
   };
 
   return (
     <nav className="navbar navbar-expand-lg navbar-light bg-light">
       <div className="container-fluid">
-        <Link className="navbar-brand" to="/">MyApp</Link>
+        {/* Conditionally link to the dashboard if the user is logged in */}
+        <Link className="navbar-brand" to={token ? "/dashboard" : "/login"}>MyApp</Link>
         <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
           <span className="navbar-toggler-icon"></span>
         </button>

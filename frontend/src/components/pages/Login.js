@@ -22,6 +22,12 @@ function Login() {
     }
   };
 
+  // Redirect to dashboard if already logged in
+  const token = localStorage.getItem('jwtToken');
+  if (token) {
+    navigate('/dashboard');
+  }
+
   return (
     <div className="container mt-5">
       <div className="row justify-content-center">
