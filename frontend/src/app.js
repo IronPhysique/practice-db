@@ -3,8 +3,8 @@ import React from 'react';
 import Login from './components/pages/Login';
 import Signup from './components/pages/Signup';  // Import Signup component
 import Dashboard from './components/pages/Dashboard';
-import PrivateRoute from './components/PrivateRoute';
-import Navbar from './components/Navbar';  // Adding a navigation bar
+import PrivateRoute from './components/routes/PrivateRoute';
+import Navbar from './components/pages/Navbar';  // Adding a navigation bar
 
 const App = () => {
   return (
