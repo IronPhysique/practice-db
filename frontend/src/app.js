@@ -1,10 +1,10 @@
 import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
 import React from 'react';
-import Login from './components/login';
-import Signup from './components/signup';  // Import Signup component
+import Login from './components/Login';
+import Signup from './components/Signup';  // Import Signup component
 import Dashboard from './components/Dashboard';
 import PrivateRoute from './components/PrivateRoute';
-import Navbar from './components/navbar';  // Adding a navigation bar
+import Navbar from './components/Navbar';  // Adding a navigation bar
 
 const App = () => {
   return (
