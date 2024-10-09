@@ -14,7 +14,7 @@ const App = () => {
         <Route path="/" element={<Navigate to="/login" />} />
         <Route path="/login" element={<Login />} />
         <Route path="/signup" element={<Signup />} />  {/* Add the signup route */}
-        <Route path="/dashboard" element={<PrivateRoute><Dashboard /></PrivateRoute>} />
+        <Route path="/dashboard" element={<Dashboard />} />  {/* add this when auth needs to be readded element={<PrivateRoute><Dashboard /></PrivateRoute>} />*/}
       </Routes>
     </Router>
   );

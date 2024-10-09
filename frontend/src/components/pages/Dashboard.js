@@ -1,61 +1,21 @@
-import React, { useState } from 'react';
-import axios from '../../services/api';
-import { useNavigate } from 'react-router-dom';
+import React from 'react';
+import StarterForm from '../forms/StarterForm';  // Import StarterForm component
+import LeaverForm from '../forms/LeaverForm';  // Import LeaverForm component
 
-function Login() {
-  const [credentials, setCredentials] = useState({ username: '', password: '' });
-  const [error, setError] = useState('');
-  const navigate = useNavigate();
-
-  const handleChange = (e) => {
-    setCredentials({ ...credentials, [e.target.name]: e.target.value });
-  };
-
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    try {
-      const response = await axios.post('/login', credentials);
-      localStorage.setItem('jwtToken', response.data.token);  
-      navigate('/dashboard'); 
-    } catch (err) {
-      setError('Invalid credentials');
-    }
-  };
-
+function Dashboard() {
   return (
     <div className="container">
-      <div className="row justify-content-center">
+      <h2 className="text-center mb-4">Dashboard</h2>
+      <div className="row">
         <div className="col-md-6">
-          <div className="card shadow-sm">
-            <div className="card-body">
-              <h2 className="text-center mb-4">Login</h2>
-              <form onSubmit={handleSubmit}>
-                <input
-                  name="username"
-                  value={credentials.username}
-                  onChange={handleChange}
-                  placeholder="Username"
-                  className="form-control"
-                  required
-                />
-                <input
-                  name="password"
-                  value={credentials.password}
-                  onChange={handleChange}
-                  placeholder="Password"
-                  type="password"
-                  className="form-control"
-                  required
-                />
-                <button type="submit" className="btn btn-primary w-100">Login</button>
-              </form>
-              {error && <p className="text-danger mt-3">{error}</p>}
-            </div>
-          </div>
+          <StarterForm />  {/* Render StarterForm */}
+        </div>
+        <div className="col-md-6">
+          <LeaverForm />  {/* Render LeaverForm */}
         </div>
       </div>
     </div>
   );
 }
 
-export default Login;
+export default Dashboard;
