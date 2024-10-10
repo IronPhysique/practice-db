@@ -11,7 +11,7 @@ function Navbar() {
   return (
     <nav className="navbar navbar-expand-lg navbar-dark bg-primary">
       <div className="container">
-        {/* Brand */}
+        {/* Only one MyApp brand */}
         <Link className="navbar-brand" to="/">MyApp</Link>
 
         {/* Mobile toggle button */}
@@ -19,9 +19,14 @@ function Navbar() {
           <span className="navbar-toggler-icon"></span>
         </button>
 
-        {/* Navbar links */}
         <div className="collapse navbar-collapse" id="navbarNav">
-          <ul className="navbar-nav ms-auto">  {/* Align links to the right */}
+          <ul className="navbar-nav ms-auto">
+            <li className="nav-item">
+              <Link className="nav-link" to="/dashboard">Dashboard</Link>
+            </li>
+            <li className="nav-item">
+              <Link className="nav-link" to="/submit-forms">Submit Forms</Link>
+            </li>
             {!token ? (
               <>
                 <li className="nav-item">
@@ -32,22 +37,9 @@ function Navbar() {
                 </li>
               </>
             ) : (
-              <>
-                {/* Link to Dashboard */}
-                <li className="nav-item">
-                  <Link className="nav-link" to="/dashboard">Dashboard</Link>
-                </li>
-
-                {/* Link to Submit Forms */}
-                <li className="nav-item">
-                  <Link className="nav-link" to="/submit-forms">Submit Forms</Link>
-                </li>
-
-                {/* Logout link */}
-                <li className="nav-item">
-                  <Link className="nav-link" to="/login" onClick={handleLogout}>Logout</Link>
-                </li>
-              </>
+              <li className="nav-item">
+                <Link className="nav-link" to="/login" onClick={handleLogout}>Logout</Link>
+              </li>
             )}
           </ul>
         </div>
