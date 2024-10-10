@@ -14,7 +14,7 @@ function StarterForm() {
     e.preventDefault();
 
     try {
-      const response = await axios.post('/api/submit', 
+      const response = await axios.post('http://172.167.90.18:5000/api/submit', 
         { 
           name: starterData.name, 
           position: starterData.position, 
