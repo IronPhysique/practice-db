@@ -12,8 +12,23 @@ function StarterForm() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+
     try {
-      const response = await axios.post('/api/submit', { ...starterData, type: 'starter' });
+      const response = await axios.post('/api/submit', 
+        { 
+          name: starterData.name, 
+          position: starterData.position, 
+          start_date: starterData.startDate,  // Match backend key
+          type: 'starter' 
+        }
+        /* Uncomment when JWT authentication is set up
+        ,{
+          headers: {
+            Authorization: `Bearer ${token}`  // Add token to headers
+          }
+        }
+        */
+      );
       setMessage('Starter added successfully!');
       setError('');
       setStarterData({ name: '', position: '', startDate: '' });

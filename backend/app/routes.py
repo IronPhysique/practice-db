@@ -1,5 +1,4 @@
 from flask import Blueprint, request, jsonify
-from flask_jwt_extended import jwt_required, get_jwt_identity
 from app.models import db, Starter, Leaver
 from datetime import datetime
 
@@ -12,9 +11,12 @@ def parse_date(date_str):
         return None
 
 @routes.route('/api/submit', methods=['POST'])
-@jwt_required()
+# Uncomment the next line when JWT authentication is set up
+# @jwt_required()
 def submit_data():
-    current_user = get_jwt_identity()  # Get user identity from the token
+    # Uncomment the following line when JWT is enabled
+    # current_user = get_jwt_identity()  # Get user identity from the token
+    
     data = request.get_json()
 
     # Determine whether to create a starter or a leaver based on the input

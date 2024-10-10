@@ -12,8 +12,23 @@ function LeaverForm() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+
     try {
-      const response = await axios.post('/api/submit', { ...leaverData, type: 'leaver' });
+      const response = await axios.post('/api/submit', 
+        { 
+          name: leaverData.name, 
+          position: leaverData.position, 
+          leave_date: leaverData.leaveDate,  // Match backend key
+          type: 'leaver' 
+        }
+        /* Uncomment when JWT authentication is set up
+        ,{
+          headers: {
+            Authorization: `Bearer ${token}`  // Add token to headers
+          }
+        }
+        */
+      );
       setMessage('Leaver added successfully!');
       setError('');
       setLeaverData({ name: '', position: '', leaveDate: '' });
