@@ -12,7 +12,7 @@ function Navbar() {
     <nav className="navbar navbar-expand-lg navbar-light bg-light">
       <div className="container-fluid">
         {/* Conditionally link to the dashboard if the user is logged in */}
-        <Link className="navbar-brand" to={token ? "/dashboard" : "/login"}>MyApp</Link>
+        <Link className="navbar-brand" to={token ? "/dashboard" : "/dashboard"}>MyApp</Link>
         <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
           <span className="navbar-toggler-icon"></span>
         </button>
