@@ -1,44 +1,75 @@
-import React, { useState } from 'react';
-import StarterForm from '../forms/StarterForm';
-import LeaverForm from '../forms/LeaverForm';
+import React, { useState, useEffect } from 'react';
+import axios from '../../services/api';  // Assuming axios is configured here
 
-function Dashboard() {
-  const [formType, setFormType] = useState(null);  // Tracks which form is selected (Starter/Leaver)
+const Dashboard = () => {
+  const [starters, setStarters] = useState([]);  // State to store starters data
+  const [leavers, setLeavers] = useState([]);  // State to store leavers data
+  const [error, setError] = useState('');
 
-  // Function to render the selected form
-  const renderForm = () => {
-    if (formType === 'starter') {
-      return <StarterForm />;
-    } else if (formType === 'leaver') {
-      return <LeaverForm />;
-    }
-    return null;
-  };
+  // Fetch the starters and leavers on component mount
+  useEffect(() => {
+    const fetchStarters = async () => {
+      try {
+        const response = await axios.get('http://172.167.90.18:5000/api/starters');  // Full URL
+        setStarters(response.data);
+      } catch (err) {
+        setError('Error fetching starters');
+      }
+    };
+
+    const fetchLeavers = async () => {
+      try {
+        const response = await axios.get('http://172.167.90.18:5000/api/leavers');  // Full URL
+        setLeavers(response.data);
+      } catch (err) {
+        setError('Error fetching leavers');
+      }
+    };
+
+    fetchStarters();
+    fetchLeavers();
+  }, []);  // Empty dependency array ensures this only runs on mount
 
   return (
     <div className="container mt-5">
-      <h2 className="text-center mb-4">Dashboard</h2>
+      <h2 className="text-center mb-4">Dashboard: View Requests</h2>
+      {error && <p className="text-danger">{error}</p>}
 
-      {/* Button group to select form type */}
-      <div className="text-center mb-4">
-        <button 
-          className={`btn btn-primary me-2 ${formType === 'starter' ? 'active' : ''}`}
-          onClick={() => setFormType('starter')}
-        >
-          Create Starter
-        </button>
-        <button 
-          className={`btn btn-secondary ${formType === 'leaver' ? 'active' : ''}`}
-          onClick={() => setFormType('leaver')}
-        >
-          Create Leaver
-        </button>
+      <div className="row">
+        {/* Display Starters */}
+        <div className="col-md-6">
+          <h3>Submitted Starters</h3>
+          <ul className="list-group">
+            {starters.length === 0 ? (
+              <li className="list-group-item">No starters found</li>
+            ) : (
+              starters.map(starter => (
+                <li key={starter.id} className="list-group-item">
+                  {starter.name} - {starter.position} (Start Date: {starter.start_date})
+                </li>
+              ))
+            )}
+          </ul>
+        </div>
+
+        {/* Display Leavers */}
+        <div className="col-md-6">
+          <h3>Submitted Leavers</h3>
+          <ul className="list-group">
+            {leavers.length === 0 ? (
+              <li className="list-group-item">No leavers found</li>
+            ) : (
+              leavers.map(leaver => (
+                <li key={leaver.id} className="list-group-item">
+                  {leaver.name} - {leaver.position} (Leave Date: {leaver.leave_date})
+                </li>
+              ))
+            )}
+          </ul>
+        </div>
       </div>
-
-      {/* Render the selected form */}
-      {renderForm()}
     </div>
   );
-}
+};
 
 export default Dashboard;

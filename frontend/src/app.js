@@ -7,6 +7,7 @@ import PrivateRoute from './components/routes/PrivateRoute';
 import Navbar from './components/pages/Navbar';  // Adding a navigation bar
 import StarterForm from './components/forms/StarterForm';
 import LeaverForm from './components/forms/LeaverForm';
+import SubmitForms from './components/pages/SubmitForms';
 
 const App = () => {
   return (
@@ -17,6 +18,7 @@ const App = () => {
         <Route path="/login" element={<Login />} />
         <Route path="/signup" element={<Signup />} />  {/* Add the signup route */}
         <Route path="/dashboard" element={<Dashboard />} />  {/* add this when auth needs to be readded element={<PrivateRoute><Dashboard /></PrivateRoute>} />*/}
+        <Route path="/submit-forms" element={<SubmitForms />} />
       </Routes>
     </Router>
   );
