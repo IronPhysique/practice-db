@@ -1,9 +1,7 @@
 import React, { useState, useEffect } from 'react';
-import axios from '../../services/api';
-import StarterForm from '../forms/StarterForm';  // Import StarterForm component
-import LeaverForm from '../forms/LeaverForm';  // Import LeaverForm component
+import axios from '../../services/api';  // Assuming axios is configured here
 
-function Dashboard() {
+const Dashboard = () => {
   const [starters, setStarters] = useState([]);  // State to store starters data
   const [leavers, setLeavers] = useState([]);  // State to store leavers data
   const [error, setError] = useState('');
@@ -12,7 +10,7 @@ function Dashboard() {
   useEffect(() => {
     const fetchStarters = async () => {
       try {
-        const response = await axios.get('/api/starters');
+        const response = await axios.get('http://172.167.90.18:5000/api/starters');  // Full URL
         setStarters(response.data);
       } catch (err) {
         setError('Error fetching starters');
@@ -21,7 +19,7 @@ function Dashboard() {
 
     const fetchLeavers = async () => {
       try {
-        const response = await axios.get('/api/leavers');
+        const response = await axios.get('http://172.167.90.18:5000/api/leavers');  // Full URL
         setLeavers(response.data);
       } catch (err) {
         setError('Error fetching leavers');
@@ -33,22 +31,10 @@ function Dashboard() {
   }, []);  // Empty dependency array ensures this only runs on mount
 
   return (
-    <div className="container">
+    <div className="container mt-5">
       <h2 className="text-center mb-4">Dashboard</h2>
-      <div className="row">
-        {/* Render Forms */}
-        <div className="col-md-6">
-          <StarterForm />  {/* Render StarterForm */}
-        </div>
-        <div className="col-md-6">
-          <LeaverForm />  {/* Render LeaverForm */}
-        </div>
-      </div>
-
-      {/* Display Submitted Starters and Leavers */}
       {error && <p className="text-danger">{error}</p>}
-
-      <div className="row mt-5">
+      <div className="row">
         {/* Display Starters */}
         <div className="col-md-6">
           <h3>Submitted Starters</h3>
@@ -83,6 +69,6 @@ function Dashboard() {
       </div>
     </div>
   );
-}
+};
 
 export default Dashboard;
