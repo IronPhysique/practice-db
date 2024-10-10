@@ -3,9 +3,8 @@ body {
     margin: 0;
     padding: 0;
     font-family: 'Roboto', sans-serif;
-    background-color: #f0f4f7;
-    /* Light background */
-    color: #333;
+    background-color: #f2f2f2;  /* Light gray background for a clean, modern look */
+    color: #333;  /* Darker gray text for readability */
 }
 
 /* Center the content and add some spacing */
@@ -13,78 +12,98 @@ body {
     margin-top: 50px;
 }
 
+/* Card styling for form containers */
 .card {
     border: none;
-    border-radius: 10px;
+    border-radius: 12px;
     padding: 20px;
     background-color: #ffffff;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    /* Add a subtle shadow */
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);  /* Slightly deeper shadow for better depth */
 }
 
-/* Button Toggle Style */
-.toggle-buttons {
-    display: flex;
-    justify-content: center;
+/* Header styles */
+h2 {
+    color: #515151;  /* Medium gray for headers */
+    font-weight: 600;
+    text-transform: uppercase;
     margin-bottom: 20px;
 }
 
-.toggle-buttons button {
-    padding: 10px 20px;
-    font-size: 16px;
-    font-weight: 500;
-    border: 1px solid #007bff;
-    background-color: white;
-    color: #007bff;
-    border-radius: 5px;
-    margin: 0 10px;
-    cursor: pointer;
-    transition: background-color 0.3s ease, color 0.3s ease;
-}
-
-.toggle-buttons button.active {
-    background-color: #007bff;
-    color: white;
-}
-
-.toggle-buttons button:hover {
-    background-color: #0056b3;
-    color: white;
-}
-
-
-h2 {
-    color: #007bff;
-    /* Primary color */
-    font-weight: 500;
-}
-
-/* Buttons */
+/* Button styles */
 button {
-    background-color: #007bff;
+    background-color: #737373;  /* A balanced gray for buttons */
     color: white;
     border: none;
-    padding: 10px 15px;
+    padding: 12px 20px;
     border-radius: 5px;
     cursor: pointer;
     transition: background-color 0.3s ease;
 }
 
 button:hover {
-    background-color: #0056b3;
+    background-color: #5a5a5a;  /* Slightly darker shade on hover */
 }
 
+.toggle-buttons {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 30px;
+}
+
+.toggle-buttons button {
+    padding: 10px 25px;
+    font-size: 16px;
+    font-weight: 500;
+    border: 1px solid #737373;
+    background-color: white;
+    color: #737373;
+    border-radius: 6px;
+    margin: 0 10px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.toggle-buttons button.active {
+    background-color: #737373;  /* Active button with gray background */
+    color: white;
+}
+
+.toggle-buttons button:hover {
+    background-color: #5a5a5a;  /* Darker shade on hover */
+    color: white;
+}
+
+/* Input styling */
 input {
-    padding: 10px;
-    margin-bottom: 15px;
+    padding: 12px;
+    margin-bottom: 20px;
     width: 100%;
-    border: 1px solid #ddd;
-    border-radius: 4px;
+    border: 1px solid #ccc;  /* Subtle border to distinguish input fields */
+    border-radius: 5px;
+    background-color: #f9f9f9;
 }
 
-/* Responsive layout for smaller screens */
+/* Footer or additional text styling */
+footer {
+    background-color: #515151;
+    padding: 20px;
+    color: white;
+    text-align: center;
+    font-size: 14px;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+}
+
+/* Responsive layout */
 @media (max-width: 768px) {
     .container {
         margin-top: 20px;
+        padding: 10px;
+    }
+
+    .toggle-buttons button {
+        margin: 5px 0;
+        width: 100%;
     }
 }
