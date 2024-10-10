@@ -107,3 +107,38 @@ footer {
         width: 100%;
     }
 }
+
+/* Stylish Headers */
+.header-title {
+    font-size: 2rem;         /* Large font size for prominence */
+    font-weight: bold;       /* Bold for emphasis */
+    text-align: center;      /* Center the text */
+    text-transform: uppercase; /* Make all letters uppercase for a modern look */
+    letter-spacing: 1px;     /* Adds slight space between letters */
+    margin-bottom: 20px;     /* Space below the header */
+    padding-bottom: 10px;    /* Padding for a cleaner look */
+    border-bottom: 2px solid #737373; /* Underline with a subtle gray line */
+}
+
+.sub-header {
+    font-size: 1.5rem;       /* Slightly smaller for sub-headers */
+    font-weight: 500;        /* Medium weight for contrast with main headers */
+    text-align: center;      /* Centered */
+    margin-bottom: 15px;     /* Space below the sub-header */
+    color: #515151;          /* Dark gray for elegance */
+}
+
+
+/* Navbar Link Styling for Consistency */
+.nav-link {
+    color: #ffffff;  /* White text for navbar links */
+    font-weight: 500;  /* Medium weight for readability */
+    text-transform: uppercase;  /* Uppercase for consistency with headers */
+    padding: 10px 15px;
+    transition: color 0.3s ease;
+}
+
+.nav-link:hover {
+    color: #cccccc;  /* Slightly lighter shade on hover */
+    text-decoration: underline;  /* Underline on hover for emphasis */
+}

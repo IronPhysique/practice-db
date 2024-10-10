@@ -2,15 +2,15 @@ import React, { useState, useEffect } from 'react';
 import axios from '../../services/api';  // Assuming axios is configured here
 
 const Dashboard = () => {
-  const [starters, setStarters] = useState([]);  // State to store starters data
-  const [leavers, setLeavers] = useState([]);  // State to store leavers data
+  const [starters, setStarters] = useState([]);
+  const [leavers, setLeavers] = useState([]);
   const [error, setError] = useState('');
 
-  // Fetch the starters and leavers on component mount
+  // Fetch starters and leavers
   useEffect(() => {
     const fetchStarters = async () => {
       try {
-        const response = await axios.get('http://172.167.90.18:5000/api/starters');  // Full URL
+        const response = await axios.get('http://172.167.90.18:5000/api/starters');
         setStarters(response.data);
       } catch (err) {
         setError('Error fetching starters');
@@ -19,7 +19,7 @@ const Dashboard = () => {
 
     const fetchLeavers = async () => {
       try {
-        const response = await axios.get('http://172.167.90.18:5000/api/leavers');  // Full URL
+        const response = await axios.get('http://172.167.90.18:5000/api/leavers');
         setLeavers(response.data);
       } catch (err) {
         setError('Error fetching leavers');
@@ -28,17 +28,17 @@ const Dashboard = () => {
 
     fetchStarters();
     fetchLeavers();
-  }, []);  // Empty dependency array ensures this only runs on mount
+  }, []);
 
   return (
     <div className="container mt-5">
-      <h2 className="text-center mb-4">Dashboard: View Requests</h2>
+      <h2 className="header-title">Dashboard: View Requests</h2>
       {error && <p className="text-danger">{error}</p>}
 
       <div className="row">
         {/* Display Starters */}
         <div className="col-md-6">
-          <h3>Submitted Starters</h3>
+          <h3 className="sub-header">Submitted Starters</h3>
           <ul className="list-group">
             {starters.length === 0 ? (
               <li className="list-group-item">No starters found</li>
@@ -54,7 +54,7 @@ const Dashboard = () => {
 
         {/* Display Leavers */}
         <div className="col-md-6">
-          <h3>Submitted Leavers</h3>
+          <h3 className="sub-header">Submitted Leavers</h3>
           <ul className="list-group">
             {leavers.length === 0 ? (
               <li className="list-group-item">No leavers found</li>
